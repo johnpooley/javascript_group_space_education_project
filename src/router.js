@@ -8,6 +8,7 @@ import Neptune from './components/neptune.vue'
 import Saturn from './components/saturn.vue'
 import Uranus from './components/uranus.vue'
 import Venus from './components/venus.vue'
+import Moon from './components/moon.vue'
 
 // import Mercury from './components/mercury.vue'
 import VueRouter from 'vue-router'
@@ -25,6 +26,7 @@ const routes =  [
     {path: '/saturn', component: Saturn, name:'saturn'},
     {path: '/uranus', component: Uranus, name:'uranus'},
     {path: '/venus', component: Venus, name:'venus'},
+    {path: '/moon/:moonname', component: Moon, name:'moon', props: true }
     // {path: '/mercury', component: Mercury}
   ];
 

@@ -6,7 +6,7 @@
   </section>
     <!-- need to loop through this moon array -->
       <div class ="facts">
-        <div class="earth">
+        <div class="jupiter">
         <div class="wrap">
            <div class="background"></div>
            <div class="clouds"></div>
@@ -59,7 +59,7 @@ export default {
   padding: 10px;
 }
 
-.earth .background{
+.jupiter .background{
   animation: translateBackground 40s infinite linear;
   background:url('../assets/planet_masks/jupiter.jpg') repeat-x;
   width:300px;

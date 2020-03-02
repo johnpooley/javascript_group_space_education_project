@@ -10,6 +10,7 @@ import Neptune from './components/neptune.vue'
 import Saturn from './components/saturn.vue'
 import Uranus from './components/uranus.vue'
 import Venus from './components/venus.vue'
+import Moon from './components/moon.vue'
 
 
 Vue.config.productionTip = false

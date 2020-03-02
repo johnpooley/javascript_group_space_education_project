@@ -21,6 +21,8 @@
   </div>
     <h2>Moons</h2> <p>{{ frenchEarth.moons[0].moon }}</p>
     <h2>Moons</h2> {{ frenchEarth.moons[0].rel }}</p>
+    <router-link :to="{name: 'moon', params:{ moonname: luna}}"><h1>luna</h1></router-link>
+
     <h2>Distance from Sun</h2> {{ frenchEarth.perihelion }}</p>
     <h2>Mass</h2> {{ frenchEarth.mass.massValue }}</p>
     <h2>Gravity</h2> {{ frenchEarth.gravity }}</p>
