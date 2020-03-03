@@ -11,7 +11,10 @@
         </div>
         <div class="mask"></div>
       </div>
-    </br></br></br></br></br></br><h2>Distance from Sun</h2><p> {{ frenchMercury.perihelion }}</p>
+    </br></br></br></br></br></br></br></br>
+    <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1H_YX4ky4YMSNalDycbkwy8S2xEEJTR79" type="audio/mpeg">
+      </audio>
+      <button v-on:click="playAudio">Play Planet Sound</button><h2>Distance from Sun</h2><p> {{ frenchMercury.perihelion }}</p>
     <h2>Mass</h2><p> {{ frenchMercury.mass.massValue }}</p>
     <h2>Gravity</h2><p> {{ frenchMercury.gravity }}</p>
     <h2>Radius</h2><p> {{ frenchMercury.meanRadius }}</p>
@@ -43,8 +46,22 @@ export default {
     fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Mercury_(planet)&origin=*')
     .then(res => res.json())
     .then(wikiMercury => this.wikiMercury = wikiMercury)
-  }
-}
+  },
+  methods: {
+      playAudio: function(event){
+        let audio = document.getElementById('testAudio');
+        if(audio.className == 'is-playing'){
+          audio.className = "";
+          event.target.innerHTML = "Play Planet Sound"
+          audio.pause();
+        }else{
+          audio.className = "is-playing";
+          event.target.innerHTML = "Pause";
+          audio.play();
+        }
+      }
+    }
+    }
 </script>
 
 <style lang="css" scoped>

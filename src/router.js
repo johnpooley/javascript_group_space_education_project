@@ -9,6 +9,7 @@ import Saturn from './components/saturn.vue'
 import Uranus from './components/uranus.vue'
 import Venus from './components/venus.vue'
 import Moon from './components/moon.vue'
+import Iss from './components/iss.vue'
 
 import VueRouter from 'vue-router'
 import App from './App.vue'
@@ -26,7 +27,8 @@ const routes =  [
     {path: '/uranus', component: Uranus, name:'uranus'},
     {path: '/venus', component: Venus, name:'venus'},
     {path: '/moon/:moonname', component: Moon, name:'moon', props: true },
-    {path: '/home', component: Home,redirect: ''}
+    {path: '/home', component: Home,redirect: ''},
+    {path: '/iss', component: Iss, name:'iss'}
   ];
 
   const router = new VueRouter(

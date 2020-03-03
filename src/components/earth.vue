@@ -14,9 +14,9 @@
       </div>
       <div class = "list"></br></br></br></br></br></br>
       <h2>Moons</h2>
-      <router-link :to="{name: 'moon', params:{ moonname: lune}}"><p>Luna</p></router-link>
+      <router-link :to="{name: 'moon', params:{ moonname: moon}}"><p>Luna</p></router-link>
       <h2>Satellites</h2>
-      <router-link :to="{name:'iss', params:{ moonname: luna}}"><p>International Space Station</p></router-link>
+      <router-link :to="{name:'iss', params:{ moonname: iss}}"><p>International Space Station</p></router-link>
       <h2>Distance from Sun</h2> {{ frenchEarth.perihelion }}</p>
       <h2>Mass</h2> {{ frenchEarth.mass.massValue }}</p>
       <h2>Gravity</h2> {{ frenchEarth.gravity }}</p>

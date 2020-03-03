@@ -1,78 +1,81 @@
 <template lang="html">
-  <div id="neptune" v-if="frenchNeptune">
-    <h1>{{ frenchNeptune.englishName }}</h1>
-    <section class = "blurb">
-    <p v-if="wikiNeptune">{{ wikiNeptune.query.pages[19003265].extract }}</p></section>
-    <!-- need to loop through this moon array -->
-      <div class ="facts">
-        <div class="earth">
-        <div class="wrap">
-           <div class="background"></div>
-           <div class="clouds"></div>
-        </div>
-        <div class="mask"></div>
-      </div>
-    </br></br></br></br></br></br></br></br>
-    <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1tHpDu8pk6NC-vOUaz_SXhKjucHFQtmq0" type="audio/mpeg">
-      </audio>
-      <button v-on:click="playAudio">Play Planet Sound</button>
-    <h2>Moons</h2><p> {{ frenchNeptune.moons[0].moon }}</p>
-    <h2>Distance from Sun</h2><p> {{ frenchNeptune.perihelion }}</p>
-    <h2>Mass</h2><p> {{ frenchNeptune.mass.massValue }}</p>
-    <h2>Gravity</h2><p> {{ frenchNeptune.gravity }}</p>
-    <h2>Radius</h2><p> {{ frenchNeptune.meanRadius }}</p>
-    <h2>Discovered by</h2><p> {{ frenchNeptune.discoveredBy }}</p>
+  <div id="iss">
+    <h1>The International Space Station</h1>
+    <section class ="blurb">
+    <p v-if="wikiIss">{{wikiIss.query.pages[15043].extract}}
+    </p></section>
+  <div class ="facts">
+    <div class="map">
+      <h2>Where is the ISS now?</h2>
+    <iframe
+      :src="results.map_url"
+      width="300"
+      height="300"
+      id="gmap_canvas"
+      frameborder="0"
+      scrolling="no"
+      marginheight="0"
+      marginwidth="0"
+      zoom=".00001"></iframe>
+    </div>
+    <h2>Deployed</h2> <p>1998</p>
+    <h2>Call Sign</h2><p>Alpha</p>
+    <h2>Orbital Speed</h2> <p>7.66 km/s</p>
+    <h2>Length</h2> <p>73 m</p>
+    <h2>Width</h2> <p>109 m</p>
+    <h2>Mass</h2> <p>419, 725 kg</p>
   </div>
   </div>
-
 </template>
 
 <script>
-// import { eventBus } from ''
 export default {
-  name: 'neptune',
-  data(){
-    return{
-      frenchNeptune:null,
-      wikiNeptune: null
+  name: "iss",
+  data() {
+    return {
+      issStats:null,
+      wikiISS:null,
 
+      results: {
+        map_url: "",
+        google_url: "",
+      }
     };
-    //fetch from wikidata API and French API
   },
-  mounted(){
-    fetch('https://api.le-systeme-solaire.net/rest/bodies/neptune')
-    .then(res => res.json())
-    .then(frenchNeptune => this.frenchNeptune = frenchNeptune);
+   mounted:function() {
 
-    // how do we arrange multiple API fetch requests?
+     fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=International_Space_Station&origin=*')
+     .then(res => res.json())
+     .then(wikiIss => this.wikiIss = wikiIss);
 
-    fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Neptune&origin=*')
-    .then(res => res.json())
-    .then(wikiNeptune => this.wikiNeptune = wikiNeptune)
-  },
-  methods: {
-      playAudio: function(event){
-        let audio = document.getElementById('testAudio');
-        if(audio.className == 'is-playing'){
-          audio.className = "";
-          event.target.innerHTML = "Play Planet Sound"
-          audio.pause();
-        }else{
-          audio.className = "is-playing";
-          event.target.innerHTML = "Pause";
-          audio.play();
-        }
+     this.getData();
+
+     window.setInterval(this.getData, 10000);
+    },
+    methods: {
+      getData() {
+        console.log("here");
+        fetch("http://api.open-notify.org/iss-now", {})
+        .then(res => res.json())
+        .then(issStats => this.issStats = issStats)
+        .then(response => {
+          this.results.map_url =`https://maps.google.com/maps?q=${response.iss_position.latitude},${response.iss_position.longitude}&t=&z=3&ie=UTF8&iwloc=&output=embed&maptype=satellite`
+        })
+        .catch(error => {
+          console.log(error);
+        });
       }
     }
-    }
+};
 </script>
 
 <style lang="css" scoped>
+
 #view {
   width: 100% !important
 }
 
-#neptune {
+#earth {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -85,13 +88,13 @@ h1 {
   font-size: 3em;
   font-family: 'Oxanium', serif;
   position: relative;
-  text-align: left;
-  margin-left: 40px;
+  text-align: left
 }
 
 h1 span{
 background-color:rgba(51,51,51,0.5);
 padding: 20px;
+margin-left: 20px;
 border-radius:10%
 }
 
@@ -135,7 +138,7 @@ border-radius:10%
 }
 .earth .background{
   animation: translateBackground 40s infinite linear;
-  background:url('../assets/planet_masks/neptune.jpg') repeat-x;
+  background:url('../assets/planet_masks/earth.jpg') repeat-x;
   width:300px;
   height:300px;
   position:absolute;
