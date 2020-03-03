@@ -25,7 +25,8 @@ const routes =  [
     {path: '/saturn', component: Saturn, name:'saturn'},
     {path: '/uranus', component: Uranus, name:'uranus'},
     {path: '/venus', component: Venus, name:'venus'},
-    {path: '/moon/:moonname', component: Moon, name:'moon', props: true }
+    {path: '/moon/:moonname', component: Moon, name:'moon', props: true },
+    {path: '/home', component: Home,redirect: ''}
   ];
 
   const router = new VueRouter(

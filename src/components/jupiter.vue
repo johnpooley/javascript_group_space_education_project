@@ -12,7 +12,22 @@
         </div>
         <div class="mask"></div>
       </div>
-    </br></br></br></br></br></br><h2>Moons</h2><p> {{ frenchJupiter.moons[0].moon }}</p>
+    </br></br></br></br></br></br><h2>Moons</h2><p>
+<label for="moonList">Select a Moon</label>
+<br>
+<select id="frenchJupiter" v-on:change="goToMoon" v-model="selectedMoon">
+  <option v-for="(moon,index) in frenchJupiter.moons"  >{{moon.moon}}</option>
+<!-- <router-link :to="'/moon/'+ :moon.moon" exact> -->
+
+</select>
+
+
+<!-- <select id="countries" v-model="selectedCountry">
+  <option v-for="(country, index) in countries"  v-bind:value="country" >{{country.name}}</option> -->
+
+
+
+    </p>
     <h2>Distance from Sun</h2><p> {{ frenchJupiter.perihelion }}</p>
     <h2>Mass</h2><p> {{ frenchJupiter.mass.massValue }}</p>
     <h2>Gravity</h2> <p>{{ frenchJupiter.gravity }}</p>
@@ -29,10 +44,20 @@ export default {
   data(){
     return{
       frenchJupiter:null,
-      wikiJupiter: null
+      wikiJupiter: null,
+      moonList:[],
+      selectedMoon:""
 
     };
     //fetch from wikidata API and French API
+  },
+
+  methods:{
+    goToMoon(){
+      // console.log("frenchJupiter", frenchJupiter);
+      // console.log("moon.moon", this.selectedMoon);
+      this.$router.push({path:'/moon/'+this.selectedMoon})
+    }
   },
   mounted(){
     fetch('https://api.le-systeme-solaire.net/rest/bodies/jupiter')
