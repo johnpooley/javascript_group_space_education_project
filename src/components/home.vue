@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <head>
+      <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
   <h1>Our Solar System</h1>
 </head>
 </br>
@@ -14,12 +15,12 @@
       <figure><router-link :to="{ name: 'uranus' }"><img src="../assets/uranus.png" alt="uranus" width="250" height="250"></router-link></figure>
       <figure><router-link :to="{ name: 'neptune' }"><img src="../assets/neptune.png" alt="neptune" width="250" height="250"></router-link></figure>
       <router-view></router-view>
-      <section>
-        <h1>NASA Photo of The Day</h1>
+      <div class="apod">
+        <h1 class="napod">NASA Photo of The Day</h1>
         <input v-model="selectedDate" type="date">
-        <button @click="apod">Get new image</button>
+        <button @click="apodDate">Get new image</button>
         <nasa-image-view :nasaImage="nasaImage" ></nasa-image-view>
-      </section>
+      </div>
     </section>
   </div>
 </template>
@@ -64,7 +65,7 @@ export default {
     .then(news => this.news = news)
   },
   methods: {
-    apod(selectedDate) {
+    apodDate(selectedDate) {
       fetch('https://api.nasa.gov/planetary/apod?api_key=C0ehDJAti1cLdlnjQciOknJg4WMAeOBqcpOL1G4a&date=' + this.selectedDate + '')
       .then( res => res.json())
       .then(nasaImage => this.nasaImage = nasaImage)
@@ -122,4 +123,25 @@ figcaption{
   padding: 10px;
 }
 
+.apod{
+  text-align: left;
+  border-style: solid;
+  width:35%
+}
+
+h1.napod{
+  font-size: 2em;
+  font-family: 'Oxanium', cursive;
+}
+button {
+  color:#ffffff;
+  font: old 84% 'trebuchet ms',helvetica,sans-serif;
+  background-color:#000000;
+  border:1px solid;
+  border-radius: 10px;
+  width: 110px;
+  height: 30px;
+  font-size: 0.7em;
+  font-weight: bold
+}
 </style>

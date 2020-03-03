@@ -4,10 +4,11 @@
       <link rel = "stylesheet"
    type = "text/css"
    href = "./public/style.css" />
+   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
  </head>
       <nav>
         <ul>
-        <span><li><a href="/home">Home</a></li></span>
+        <span><li><a href="/">Home</a></li></span>
       </ul>
       </nav>
     </head>
