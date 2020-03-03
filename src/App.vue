@@ -1,14 +1,26 @@
 <template>
   <div id="app">
-  </br>
-  <section class="planets">
-    <router-link :to="{name: 'home'}"><h1>Home</h1></router-link>
-    <router-view id="view"></router-view>
-  </section>
-</div>
+    <head>
+      <link rel = "stylesheet"
+   type = "text/css"
+   href = "./public/style.css" />
+ </head>
+      <nav>
+        <ul>
+        <li><a href="/home">Home</a></li>
+      </ul>
+      </nav>
+    </head>
+</br>
+
+    <section class="planets">
+      <router-view id="view"></router-view>
+    </section>
+  </div>
 </template>
 
 <script>
+
 import { eventBus } from './main.js'
 import router from './router.js'
 export default {
@@ -46,29 +58,10 @@ body{
   background:url(http://artem.anmedio.ru/dev/planet/space.jpg) repeat;
 }
 
-.planets{
-  display: inline-block;
-  overflow: scroll;
-}
-
-figure:hover{
-  transform: scale(1.5);
-}
-figure{
-  display:inline-block;
-}
-figcaption{
-  transform: rotate(90deg);
-}
-
-#jupiter {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  max-width: 600px;
-  color: white;
-  margin-left: 20px;
-  padding: 10px;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 </style>

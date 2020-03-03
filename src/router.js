@@ -10,7 +10,6 @@ import Uranus from './components/uranus.vue'
 import Venus from './components/venus.vue'
 import Moon from './components/moon.vue'
 
-// import Mercury from './components/mercury.vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 
@@ -27,11 +26,10 @@ const routes =  [
     {path: '/uranus', component: Uranus, name:'uranus'},
     {path: '/venus', component: Venus, name:'venus'},
     {path: '/moon/:moonname', component: Moon, name:'moon', props: true }
-    // {path: '/mercury', component: Mercury}
   ];
 
   const router = new VueRouter(
-    {    mode: 'history', routes });
+      {    mode: 'history', routes });
 
 
 
