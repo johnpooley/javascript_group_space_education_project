@@ -17,13 +17,12 @@
       <div class="mask"></div>
     </div>
         <button class="button_play" @click.prevent="playSound('https://drive.google.com/uc?export=download&id=1t_YLXHzoosGu6dI3MpHovS8rkLSFKDf9')"></button>
-      <h2>Moons: {{ frenchMars.moons[0].moon }}</h2>
-      <h2>Moons: {{ frenchMars.moons[0].rel }}</h2>
-      <h2>Distance from Sun: {{ frenchMars.perihelion }}</h2>
-      <h2>Mass: {{ frenchMars.mass.massValue }}</h2>
-      <h2>Gravity: {{ frenchMars.gravity }}</h2>
-      <h2>Radius: {{ frenchMars.meanRadius }}</h2>
-      <h2>Discovered by: {{ frenchMars.discoveredBy }} N/A </h2>
+      </br></br></br></br></br></br><h2>Moons</h2><p> {{ frenchMars.moons[0].moon }}</p>
+      <h2>Distance from Sun</h2><p> {{ frenchMars.perihelion }}</p>
+      <h2>Mass</h2><p> {{ frenchMars.mass.massValue }}</p>
+      <h2>Gravity</h2><p> {{ frenchMars.gravity }}</p>
+      <h2>Radius</h2><p> {{ frenchMars.meanRadius }}</p>
+      <h2>Discovered by</h2><p> {{ frenchMars.discoveredBy }} N/A </p>
     </div>
 
   </div>
@@ -66,26 +65,59 @@ export default {
 </script>
 
 <style lang="css" scoped>
-#mars {
+#view {
+  width: 100% !important
+}
+
+#mercury {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 600px;
   color: white;
   margin-left: 20px;
   padding: 10px;
 }
-.button_play{
-width: 20px;
-height: 20px;
-border-style: solid;
-border-width: 0px;
-border-color: #202020;
-border-width: 10px 0px 10px 20px;
-border-color: red blue green yellow;
-box-sizing: border-box;
-border-color: transparent transparent transparent #dd6644;
-border-radius: 20%;
+
+h1 {
+  font-size: 3em;
+  font-family: 'Oxanium', serif;
+  position: relative;
+  text-align: left;
+  margin-left: 40px;
+}
+
+h1 span{
+background-color:rgba(51,51,51,0.5);
+padding: 20px;
+border-radius:10%
+}
+
+.blurb{
+  background-color:rgba(51,51,51,0.5);
+  width: 50%;
+  padding: 28px;
+  margin-left: 20px;
+  border-radius:10%;
+  font-size: 1.5em;
+  position: relative;
+  float: left;
+  text-align: left
+}
+
+.facts{
+  position: relative;
+  /* max-width: 170px; */
+  padding: 5px;
+  margin-left: 100px;
+  border: 2px;
+  border-radius:10%;
+  text-align: center;
+  right: 200px;
+  top: 20px
+}
+
+.list{
+  /* background-color:rgba(51,51,51,0.5); */
 }
 
 .earth{
@@ -95,16 +127,8 @@ border-radius: 20%;
   border-radius:50%;
   overflow:hidden;
   box-shadow: 0 0 60px -20px rgba(255, 189, 3, 0.72), -14px -15px 40px -10px rgba(255, 238, 191, 0.23);
-  left:80px;
-  top:-200px;
   margin:-150px;
-}
-.earth .mask{
-  width:100%;
-  height:100%;
-  position: absolute;
-  box-shadow:inset -10px -10px 40px #251303, inset 10px 10px 30px -10px rgba(255, 204, 159, 0.6);
-  border-radius:50%;
+  right:  440px
 }
 .earth .background{
   animation: translateBackground 40s infinite linear;
@@ -112,6 +136,13 @@ border-radius: 20%;
   width:300px;
   height:300px;
   position:absolute;
+  border-radius:50%;
+}
+.earth .mask{
+  width:100%;
+  height:100%;
+  position: absolute;
+  box-shadow:inset -10px -10px 40px #251303, inset 10px 10px 30px -10px rgba(255, 204, 159, 0.6);
   border-radius:50%;
 }
 .earth .clouds{
@@ -138,15 +169,45 @@ border-radius: 20%;
     background-position-x:-600px;
   }
 }
-@keyframes rotatePlanet{
-  0%{
-    transform:rotateZ(0);
-  }
-  100%{
-    transform:rotateZ(-360deg);
-  }
+button {
+  color:#ffffff;
+  font: old 84% 'trebuchet ms',helvetica,sans-serif;
+  background-color:#000000;
+  border:1px solid;
+  border-radius: 10px;
+  width: 110px;
+  height: 30px;
+  font-size: 0.7em;
+  font-weight: bold
 }
-.facts{
-  top: -1700px
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgba(51,51,51);
+  border-radius: 10px;
+  width: 100%;
+  position: fixed
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+nav{
+  position: relative;
 }
 </style>

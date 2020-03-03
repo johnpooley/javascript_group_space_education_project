@@ -1,33 +1,26 @@
 <template>
   <div id="app">
-
-  <!-- <h1>Our Solar System</h1> -->
+    <head>
+      <link rel = "stylesheet"
+   type = "text/css"
+   href = "./public/style.css" />
+ </head>
+      <nav>
+        <ul>
+        <li><a href="/home">Home</a></li>
+      </ul>
+      </nav>
+    </head>
 </br>
 
     <section class="planets">
-      <!-- <router-link :to="{ name: 'earth' }"><img src="./assets/mercury.png" alt="mercury" width="50" height="50"></router-link> -->
-      <router-link :to="{name: 'home'}"><h1>Home</h1></router-link>
       <router-view id="view"></router-view>
-      <!-- <figure> <a href="../mercury"><img src="../../assets/mercury.png" alt="mercury" width="50" height="50"></a><figcaption>Mercury</figcaption></a></figure>
-      <figure> <a href="../venus"> <img src="../../assets/venus.png" alt="venus" width="145" height="145"></a><figcaption>Venus</figcaption></figure>
-      <figure> <a href="../earth"><img src="../../assets/earth.png" alt="earth" width="150" height="150"></a><figcaption>Earth</figcaption></figure>
-      <figure><a href="../mars"><img src="../../assets/mars.png" alt="mars" width="60" height="60"></a><figcaption>Mars</figcaption></figure>
-      <figure><a href="../jupiter"><img src="../../assets/jupiter.png" alt="jupiter" width="300" height="300"></a><figcaption>Jupiter</figcaption></figure>
-      <figure><a href="../saturn"><img src="../../assets/saturn.png" alt="saturn" width="280" height="280"></a><figcaption>Saturn</figcaption></figure>
-      <figure><a href="../uranus"><img src="../../assets/uranus.png" alt="uranus" width="250" height="250"></a><figcaption>Uranus</figcaption></figure>
-      <figure><a href="../neptune"><img src="../../assets/neptune.png" alt="neptune" width="250" height="250"></a><figcaption>Neptune</figcaption></figure> -->
-    </section>
-    <section>
-      <h1>NASA Photo of The Day</h1>
-      <input v-model="selectedDate" type="date">
-      <button @click="apod">Get new image</button>
-      <nasa-image-view :nasaImage="nasaImage" ></nasa-image-view>
     </section>
   </div>
 </template>
 
 <script>
-// import Earth from 'components/earth.vue'
+
 import { eventBus } from './main.js'
 import router from './router.js'
 import NasaImageView from './components/NasaImageView.vue'
@@ -79,29 +72,10 @@ body{
   background:url(http://artem.anmedio.ru/dev/planet/space.jpg) repeat;
 }
 
-.planets{
-  display: inline-block;
-  overflow: scroll;
-}
-
-figure:hover{
-  transform: scale(1.5);
-}
-figure{
-  display:inline-block;
-}
-figcaption{
-  transform: rotate(90deg);
-}
-
-#jupiter {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  max-width: 600px;
-  color: white;
-  margin-left: 20px;
-  padding: 10px;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 </style>
