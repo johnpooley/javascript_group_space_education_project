@@ -20,6 +20,12 @@
         <button @click="apod">Get new image</button>
         <nasa-image-view :nasaImage="nasaImage" ></nasa-image-view>
       </section>
+      <section>
+        <people-in-space :peopleInSpace="peopleInSpace" v-if="peopleInSpace"></people-in-space>
+      </section>
+      <section>
+        <news-feed :news="news" v-if="news"/>
+      </section>
     </section>
   </div>
 </template>
