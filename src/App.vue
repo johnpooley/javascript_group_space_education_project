@@ -1,37 +1,22 @@
 <template>
   <div id="app">
-
-  <!-- <h1>Our Solar System</h1> -->
-</br>
-
-    <section class="planets">
-      <!-- <router-link :to="{ name: 'earth' }"><img src="./assets/mercury.png" alt="mercury" width="50" height="50"></router-link> -->
-      <router-link :to="{name: 'home'}"><h1>Home</h1></router-link>
-      <router-view id="view"></router-view>
-    </section>
-    <section>
-      <h1>NASA Photo of The Day</h1>
-      <input v-model="selectedDate" type="date">
-      <button @click="apod">Get new image</button>
-      <nasa-image-view :nasaImage="nasaImage" ></nasa-image-view>
-    </section>
-  </div>
+  </br>
+  <section class="planets">
+    <router-link :to="{name: 'home'}"><h1>Home</h1></router-link>
+    <router-view id="view"></router-view>
+  </section>
+</div>
 </template>
 
 <script>
-// import Earth from 'components/earth.vue'
 import { eventBus } from './main.js'
 import router from './router.js'
-import NasaImageView from './components/NasaImageView.vue'
-
 export default {
   name: 'app',
   data(){
     return{
       planets:[],
       selectedPlanet: null,
-      nasaImage: [],
-      selectedDate: '2020-02-20'
     };
   },
 
@@ -44,16 +29,6 @@ export default {
       this.selectedPlanet = planet;
     })
   },
-  methods: {
-    apod(selectedDate) {
-      fetch('https://api.nasa.gov/planetary/apod?api_key=C0ehDJAti1cLdlnjQciOknJg4WMAeOBqcpOL1G4a&date=' + this.selectedDate + '')
-      .then( res => res.json())
-      .then(nasaImage => this.nasaImage = nasaImage)
-    }
-  },
-  components: {
-    "nasa-image-view": NasaImageView
-  }
 }
 </script>
 

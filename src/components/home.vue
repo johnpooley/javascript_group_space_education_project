@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import { eventBus } from './main.js'
-import router from './router.js'
-import NasaImageView from './components/NasaImageView.vue'
-import PeopleInSpace from './components/PeopleInSpace.vue'
-import NewsFeed from './components/NewsFeed.vue'
+import { eventBus } from '../main.js'
+import router from '../router.js'
+import NasaImageView from '../components/NasaImageView.vue'
+import PeopleInSpace from '../components/PeopleInSpace.vue'
+import NewsFeed from '../components/NewsFeed.vue'
 
 export default {
   name: 'app',
