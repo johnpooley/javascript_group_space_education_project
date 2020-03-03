@@ -31,7 +31,9 @@ export default {
   data(){
     return{
       frenchSaturn:null,
-      wikiSaturn: null
+      wikiSaturn: null,
+      moonlist: [],
+      moonNames: []
 
     };
     //fetch from wikidata API and French API
