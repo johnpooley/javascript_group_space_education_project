@@ -11,6 +11,7 @@ import Saturn from './components/saturn.vue'
 import Uranus from './components/uranus.vue'
 import Venus from './components/venus.vue'
 import Moon from './components/moon.vue'
+import Iss from './components/iss.vue'
 
 
 Vue.config.productionTip = false
