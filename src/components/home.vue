@@ -1,41 +1,33 @@
 <template>
   <div id="app">
 
-  <h1>Our Solar System</h1>
 </br>
 
     <section class="planets">
-      <router-link :to="{ name: 'mercury' }"><img src="../assets/mercury.png" alt="mercury" width="50" height="50"></router-link>
-      <router-link :to="{ name: 'venus' }"><img src="../assets/venus.png" alt="venus" width="145" height="145"></router-link>
-      <router-link :to="{ name: 'earth' }"><img src="../assets/earth.png" alt="earth" width="150" height="150"></router-link>
-      <router-link :to="{ name: 'mars' }"><img src="../assets/mars.png" alt="mars" width="60" height="60"></router-link>
-      <router-link :to="{ name: 'jupiter' }"><img src="../assets/jupiter.png" alt="jupiter" width="300" height="300"></router-link>
-      <router-link :to="{ name: 'saturn' }"><img src="../assets/saturn.png" alt="saturn" width="280" height="280"></router-link>
-      <router-link :to="{ name: 'uranus' }"><img src="../assets/uranus.png" alt="uranus" width="250" height="250"></router-link>
-      <router-link :to="{ name: 'neptune' }"><img src="../assets/neptune.png" alt="neptune" width="250" height="250"></router-link>
-
-
-
-
-      <router-view></router-view>
-
-      <!-- <figure> <a href="../mercury"><img src="../../assets/mercury.png" alt="mercury" width="50" height="50"></a><figcaption>Mercury</figcaption></a></figure>
-      <figure> <a href="../venus"> <img src="../../assets/venus.png" alt="venus" width="145" height="145"></a><figcaption>Venus</figcaption></figure>
-      <figure> <a href="../earth"><img src="../../assets/earth.png" alt="earth" width="150" height="150"></a><figcaption>Earth</figcaption></figure>
-      <figure><a href="../mars"><img src="../../assets/mars.png" alt="mars" width="60" height="60"></a><figcaption>Mars</figcaption></figure>
-      <figure><a href="../jupiter"><img src="../../assets/jupiter.png" alt="jupiter" width="300" height="300"></a><figcaption>Jupiter</figcaption></figure>
-      <figure><a href="../saturn"><img src="../../assets/saturn.png" alt="saturn" width="280" height="280"></a><figcaption>Saturn</figcaption></figure>
-      <figure><a href="../uranus"><img src="../../assets/uranus.png" alt="uranus" width="250" height="250"></a><figcaption>Uranus</figcaption></figure>
-      <figure><a href="../neptune"><img src="../../assets/neptune.png" alt="neptune" width="250" height="250"></a><figcaption>Neptune</figcaption></figure> -->
+      <router-link :to="{name: 'home'}"><h1>Home</h1></router-link>
+      <router-view id="view"></router-view>
+    </section>
+    <section>
+      <h1>NASA Photo of The Day</h1>
+      <input v-model="selectedDate" type="date">
+      <button @click="apod">Get new image</button>
+      <nasa-image-view :nasaImage="nasaImage" ></nasa-image-view>
+    </section>
+    <section>
+      <people-in-space :peopleInSpace="peopleInSpace" v-if="peopleInSpace"></people-in-space>
+    </section>
+    <section>
+      <news-feed :news="news" v-if="news"/>
     </section>
   </div>
 </template>
 
 <script>
-import earth from './earth.vue'
-import home from '../router.js'
-import { eventBus } from '../main.js'
-import NasaImageView from './NasaImageView.vue'
+import { eventBus } from './main.js'
+import router from './router.js'
+import NasaImageView from './components/NasaImageView.vue'
+import PeopleInSpace from './components/PeopleInSpace.vue'
+import NewsFeed from './components/NewsFeed.vue'
 
 export default {
   name: 'app',
@@ -44,10 +36,14 @@ export default {
       planets:[],
       selectedPlanet: null,
       nasaImage: [],
-      selectedDate: '2020-02-20'
+      selectedDate: '2020-02-20',
+      peopleInSpace: null,
+      news: []
     };
   },
-
+  created() {
+    this.apod();
+  },
   mounted(){
     fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Earth&origin=*')
     .then(res => res.json())
@@ -56,16 +52,31 @@ export default {
     eventBus.$on('planet-selected', (planet) => {
       this.selectedPlanet = planet;
     })
+
+    fetch('http://api.open-notify.org/astros.json')
+    .then(res => res.json())
+    .then(peopleInSpace => this.peopleInSpace = peopleInSpace)
+
+    fetch('http://newsapi.org/v2/top-headlines?q=Space&from=2020-02-25&sortBy=popularity&apiKey=bb8ea160607e4c3ebb0a5ccb53c23420')
+    .then(res => res.json())
+    .then(news => this.news = news)
   },
   methods: {
     apod(selectedDate) {
       fetch('https://api.nasa.gov/planetary/apod?api_key=C0ehDJAti1cLdlnjQciOknJg4WMAeOBqcpOL1G4a&date=' + this.selectedDate + '')
       .then( res => res.json())
       .then(nasaImage => this.nasaImage = nasaImage)
+    },
+    apod() {
+      fetch('https://api.nasa.gov/planetary/apod?api_key=C0ehDJAti1cLdlnjQciOknJg4WMAeOBqcpOL1G4a')
+      .then(res => res.json())
+      .then(nasaImage => this.nasaImage = nasaImage)
     }
   },
   components: {
-    "nasa-image-view": NasaImageView
+    "nasa-image-view": NasaImageView,
+    "people-in-space": PeopleInSpace,
+    "news-feed": NewsFeed
   }
 }
 </script>
@@ -98,4 +109,15 @@ figure{
 figcaption{
   transform: rotate(90deg);
 }
+
+#jupiter {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 600px;
+  color: white;
+  margin-left: 20px;
+  padding: 10px;
+}
+
 </style>
