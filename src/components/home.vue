@@ -5,14 +5,14 @@
 </head>
 </br>
     <section class="planets">
-      <router-link :to="{ name: 'mercury' }"><img src="../assets/mercury.png" alt="mercury" width="50" height="50"></router-link>
-      <router-link :to="{ name: 'venus' }"><img src="../assets/venus.png" alt="venus" width="145" height="145"></router-link>
-      <router-link :to="{ name: 'earth' }"><img src="../assets/earth.png" alt="earth" width="150" height="150"></router-link>
-      <router-link :to="{ name: 'mars' }"><img src="../assets/mars.png" alt="mars" width="60" height="60"></router-link>
-      <router-link :to="{ name: 'jupiter' }"><img src="../assets/jupiter.png" alt="jupiter" width="300" height="300"></router-link>
-      <router-link :to="{ name: 'saturn' }"><img src="../assets/saturn.png" alt="saturn" width="280" height="280"></router-link>
-      <router-link :to="{ name: 'uranus' }"><img src="../assets/uranus.png" alt="uranus" width="250" height="250"></router-link>
-      <router-link :to="{ name: 'neptune' }"><img src="../assets/neptune.png" alt="neptune" width="250" height="250"></router-link>
+      <figure><router-link :to="{ name: 'mercury' }"><img src="../assets/mercury.png" alt="mercury" width="50" height="50"></router-link></figure>
+      <figure><router-link :to="{ name: 'venus' }"><img src="../assets/venus.png" alt="venus" width="145" height="145"></router-link></figure>
+      <figure><router-link :to="{ name: 'earth' }"><img src="../assets/earth.png" alt="earth" width="150" height="150"></router-link></figure>
+      <figure><router-link :to="{ name: 'mars' }"><img src="../assets/mars.png" alt="mars" width="60" height="60"></router-link></figure>
+      <figure><router-link :to="{ name: 'jupiter' }"><img src="../assets/jupiter.png" alt="jupiter" width="300" height="300"></router-link></figure>
+      <figure><router-link :to="{ name: 'saturn' }"><img src="../assets/saturn.png" alt="saturn" width="280" height="280"></router-link></figure>
+      <figure><router-link :to="{ name: 'uranus' }"><img src="../assets/uranus.png" alt="uranus" width="250" height="250"></router-link></figure>
+      <figure><router-link :to="{ name: 'neptune' }"><img src="../assets/neptune.png" alt="neptune" width="250" height="250"></router-link></figure>
       <router-view></router-view>
       <section>
         <h1>NASA Photo of The Day</h1>

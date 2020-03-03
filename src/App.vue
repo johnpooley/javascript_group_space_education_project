@@ -7,7 +7,7 @@
  </head>
       <nav>
         <ul>
-        <li><a href="/home">Home</a></li>
+        <span><li><a href="/home">Home</a></li></span>
       </ul>
       </nav>
     </head>
@@ -62,6 +62,28 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+  position: fixed
+}
+
+li {
+  float: left;
+  background-color: rgba(51,51,51)
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
 }
 
 </style>
