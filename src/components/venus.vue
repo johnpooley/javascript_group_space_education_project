@@ -12,7 +12,10 @@
     </div>
     <div class="mask"></div>
   </div>
-</br></br></br></br></br></br>
+</br></br></br></br></br></br></br></br>
+<audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1SjhNvHpDEWEybE3F_stigJwEU-BbvJo_" type="audio/mpeg">
+  </audio>
+  <button v-on:click="playAudio">Play Planet Sound</button>
     <h2>Distance from Sun</h2><p> {{ frenchVenus.perihelion }}</p>
     <h2>Mass</h2><p> {{ frenchVenus.mass.massValue }}</p>
     <h2>Gravity</h2><p>{{ frenchVenus.gravity }}</p>
@@ -41,8 +44,22 @@ export default {
     fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Venus&origin=*')
     .then(res => res.json())
     .then(wikiVenus => this.wikiVenus = wikiVenus)
-  }
-}
+  },
+  methods: {
+      playAudio: function(event){
+        let audio = document.getElementById('testAudio');
+        if(audio.className == 'is-playing'){
+          audio.className = "";
+          event.target.innerHTML = "Play Planet Sound"
+          audio.pause();
+        }else{
+          audio.className = "is-playing";
+          event.target.innerHTML = "Pause";
+          audio.play();
+        }
+      }
+    }
+    }
 </script>
 
 <style lang="css" scoped>
