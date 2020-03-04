@@ -27,6 +27,7 @@ const routes =  [
     {path: '/uranus', component: Uranus, name:'uranus'},
     {path: '/venus', component: Venus, name:'venus'},
     {path: '/moon/:moonname', component: Moon, name:'moon', props: true },
+    {path: '/home', component: Home,redirect: ''},
     {path: '/iss', component: Iss, name:'iss'}
   ];
 

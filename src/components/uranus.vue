@@ -15,7 +15,10 @@
     </br>
   </br>  </br>
 </br>  </br>
-</br>
+</br> </br></br>
+<audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1JVdBcYNAI3GA7VV99FrlkTx_3DTevoKI" type="audio/mpeg">
+      </audio>
+      <button v-on:click="playAudio">Play Planet Sound</button>
 <h2>Moons</h2><p> {{ frenchUranus.moons[0].moon }}</p>
 <h2>Distance from Sun</h2><p> {{ frenchUranus.perihelion }}</p>
 <h2>Mass</h2><p> {{ frenchUranus.mass.massValue }}</p>
@@ -50,8 +53,22 @@ export default {
     fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Uranus&origin=*')
     .then(res => res.json())
     .then(wikiUranus => this.wikiUranus = wikiUranus)
-  }
-}
+  },
+  methods: {
+      playAudio: function(event){
+        let audio = document.getElementById('testAudio');
+        if(audio.className == 'is-playing'){
+          audio.className = "";
+          event.target.innerHTML = "Play Planet Sound"
+          audio.pause();
+        }else{
+          audio.className = "is-playing";
+          event.target.innerHTML = "Pause";
+          audio.play();
+        }
+      }
+    }
+    }
 </script>
 
 <style lang="css" scoped>

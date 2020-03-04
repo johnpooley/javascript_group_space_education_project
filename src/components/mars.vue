@@ -16,8 +16,11 @@
       </div>
       <div class="mask"></div>
     </div>
-        <button class="button_play" @click.prevent="playSound('https://drive.google.com/uc?export=download&id=1t_YLXHzoosGu6dI3MpHovS8rkLSFKDf9')"></button>
-      </br></br></br></br></br></br><h2>Moons</h2><p> {{ frenchMars.moons[0].moon }}</p>
+
+      </br></br></br></br></br></br></br></br>
+      <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1t_YLXHzoosGu6dI3MpHovS8rkLSFKDf9" type="audio/mpeg">
+      </audio>
+      <button v-on:click="playAudio">Play Planet Sound</button><h2>Moons</h2><p> {{ frenchMars.moons[0].moon }}</p>
       <h2>Distance from Sun</h2><p> {{ frenchMars.perihelion }}</p>
       <h2>Mass</h2><p> {{ frenchMars.mass.massValue }}</p>
       <h2>Gravity</h2><p> {{ frenchMars.gravity }}</p>
@@ -41,14 +44,6 @@ export default {
     //fetch from wikidata API and French API
   },
 
-  methods: {
-    playSound (sound) {
-      if(sound) {
-        var audio = new Audio(sound);
-        audio.play();
-      }
-    }
-  },
   mounted(){
 
     fetch('https://api.le-systeme-solaire.net/rest/bodies/mars')
@@ -60,8 +55,22 @@ export default {
     fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Mars&origin=*')
     .then(res => res.json())
     .then(wikiMars => this.wikiMars = wikiMars)
-  }
-}
+  },
+  methods: {
+      playAudio: function(event){
+        let audio = document.getElementById('testAudio');
+        if(audio.className == 'is-playing'){
+          audio.className = "";
+          event.target.innerHTML = "Play Planet Sound"
+          audio.pause();
+        }else{
+          audio.className = "is-playing";
+          event.target.innerHTML = "Pause";
+          audio.play();
+        }
+      }
+    }
+    }
 </script>
 
 <style lang="css" scoped>
