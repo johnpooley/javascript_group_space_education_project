@@ -13,10 +13,10 @@
         </div>
         <div class = "list">
           </br></br></br></br></br></br></br>
-          <h2>Mass: {{ frenchMoon.mass.massValue }} x 10<sup>22</sup>kg</h2>
-          <h2>Gravity: {{ frenchMoon.gravity }} m/s<sup>2</sup></h2>
-          <h2>Radius: {{ frenchMoon.meanRadius }} km</h2>
-          <h2>Discovered by: {{ frenchMoon.discoveredBy }} N/A</h2></div>          ​
+          <h2>Mass</h2> <p>{{ frenchMoon.mass.massValue }} x 10<sup>22</sup>kg</p>
+          <h2>Gravity</h2> <p>{{ frenchMoon.gravity }} m/s<sup>2</sup></p>
+          <h2>Radius</h2> <p>{{ frenchMoon.meanRadius }} km</p>
+          <h2>Discovered by</h2> <p>{{ frenchMoon.discoveredBy }} N/A</p></div>          ​
         </div>
       </div>
     </div>

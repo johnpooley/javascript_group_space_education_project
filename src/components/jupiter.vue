@@ -56,18 +56,6 @@ export default {
     .then(wikiJupiter => this.wikiJupiter = wikiJupiter)
   },
   methods: {
-<<<<<<< HEAD
-    playAudio: function(event){
-      let audio = document.getElementById('testAudio');
-      if(audio.className == 'is-playing'){
-        audio.className = "";
-        event.target.innerHTML = "Play Planet Sound"
-        audio.pause();
-      }else{
-        audio.className = "is-playing";
-        event.target.innerHTML = "Pause";
-        audio.play();
-=======
     goToMoon(){
       this.$router.push({path:'/moon/'+this.selectedMoon})
     },
@@ -82,8 +70,7 @@ export default {
           audio.className = "is-playing";
           event.target.innerHTML = "Pause";
           audio.play();
-        }
->>>>>>> develop2
+        
       }
     }
   }
