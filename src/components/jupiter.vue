@@ -12,11 +12,10 @@
         </div>
         <div class="mask"></div>
       </div>
-<<<<<<< HEAD
     </br></br></br></br></br></br><h2>Moons</h2><p>
 <label for="moonList">Select a Moon</label>
 <br>
-<select id="frenchJupiter" v-on:change="goToMoon" v-model="selectedMoon">
+<select id="frenchJupiter" @change="goToMoon" v-model="selectedMoon">
   <option v-for="(moon,index) in frenchJupiter.moons"  >{{moon.moon}}</option>
 <!-- <router-link :to="'/moon/'+ :moon.moon" exact> -->
 
@@ -59,13 +58,6 @@ export default {
     //fetch from wikidata API and French API
   },
 
-  methods:{
-    goToMoon(){
-      // console.log("frenchJupiter", frenchJupiter);
-      // console.log("moon.moon", this.selectedMoon);
-      this.$router.push({path:'/moon/'+this.selectedMoon})
-    }
-  },
   mounted(){
     fetch('https://api.le-systeme-solaire.net/rest/bodies/jupiter')
     .then(res => res.json())
@@ -76,6 +68,10 @@ export default {
     .then(wikiJupiter => this.wikiJupiter = wikiJupiter)
   },
   methods: {
+    goToMoon(){
+      this.$router.push({path:'/moon/'+this.selectedMoon})
+    },
+
       playAudio: function(event){
         let audio = document.getElementById('testAudio');
         if(audio.className == 'is-playing'){

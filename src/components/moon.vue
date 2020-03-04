@@ -12,7 +12,6 @@
           <div class="mask"></div>
         </div>
         <div class = "list">
-<<<<<<< HEAD
           <h2>Mass: {{ frenchMoon.mass.massValue }}</h2>
           <h2>Gravity: {{ frenchMoon.gravity }}</h2>
           <h2>Radius: {{ frenchMoon.meanRadius }}</h2>
@@ -260,7 +259,7 @@ export default {
     const moon = {
     props:['moonname']}
   },
-  
+
   mounted(){
     const selectedMoon = this.$route.params.moonname;
     console.log(selectedMoon);
