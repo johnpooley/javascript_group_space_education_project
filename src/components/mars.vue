@@ -16,6 +16,11 @@
       </div>
       <div class="mask"></div>
     </div>
+    <select id="frenchMars" @change="goToMoon" v-model="selectedMoon">
+      <option v-for="(moon,index) in frenchMars.moons"  >{{moon.moon}}</option>
+
+    </select>
+  </br></br></br></br></br></br></br></br>
 
       </br></br></br></br></br></br></br></br>
       <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1t_YLXHzoosGu6dI3MpHovS8rkLSFKDf9" type="audio/mpeg">
@@ -39,7 +44,11 @@ export default {
   data(){
     return{
       frenchMars:null,
-      wikiMars: null
+      wikiMars: null,
+      moonList:[],
+      selectedMoon:"",
+      moonNames: []
+
     };
     //fetch from wikidata API and French API
   },
@@ -57,6 +66,10 @@ export default {
     .then(wikiMars => this.wikiMars = wikiMars)
   },
   methods: {
+    goToMoon(){
+      this.$router.push({path:'/moon/'+this.selectedMoon})
+    },
+
       playAudio: function(event){
         let audio = document.getElementById('testAudio');
         if(audio.className == 'is-playing'){

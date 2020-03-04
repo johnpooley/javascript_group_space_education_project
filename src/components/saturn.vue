@@ -16,7 +16,6 @@
       <br>
       <select id="frenchSaturn" @change="goToMoon" v-model="selectedMoon">
         <option v-for="(moon,index) in frenchSaturn.moons"  >{{moon.moon}}</option>
-        <!-- <router-link :to="'/moon/'+ :moon.moon" exact> -->
 
       </select>
     </br></br></br></br></br></br></br></br>
