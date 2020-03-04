@@ -16,7 +16,13 @@
     <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1tHpDu8pk6NC-vOUaz_SXhKjucHFQtmq0" type="audio/mpeg">
       </audio>
       <button v-on:click="playAudio">Play Planet Sound</button>
-    <h2>Moons</h2><p> {{ frenchNeptune.moons[0].moon }}</p>
+
+      <br>
+      <select id="frenchNeptune" @change="goToMoon" v-model="selectedMoon">
+        <option v-for="(moon,index) in frenchNeptune.moons"  >{{moon.moon}}</option>
+
+      </select>
+    </br></br></br></br></br></br></br></br>
     <h2>Distance from Sun</h2><p> {{ frenchNeptune.perihelion }} km</p>
     <h2>Mass</h2><p> {{ frenchNeptune.mass.massValue }} x 10<sup>26</sup>kg</p>
     <h2>Gravity</h2><p> {{ frenchNeptune.gravity }} m/s<sup>2</sup></p>
@@ -34,7 +40,11 @@ export default {
   data(){
     return{
       frenchNeptune:null,
-      wikiNeptune: null
+      wikiNeptune: null,
+      moonList:[],
+      selectedMoon:"",
+      moonNames: []
+
 
     };
     //fetch from wikidata API and French API
@@ -51,6 +61,10 @@ export default {
     .then(wikiNeptune => this.wikiNeptune = wikiNeptune)
   },
   methods: {
+    goToMoon(){
+      this.$router.push({path:'/moon/'+this.selectedMoon})
+    },
+
       playAudio: function(event){
         let audio = document.getElementById('testAudio');
         if(audio.className == 'is-playing'){
@@ -131,7 +145,7 @@ border-radius:10%
   overflow:hidden;
   box-shadow: 0 0 60px -20px rgba(255, 189, 3, 0.72), -14px -15px 40px -10px rgba(255, 238, 191, 0.23);
   margin:-150px;
-  right:  440px
+  right:  320px
 }
 .earth .background{
   animation: translateBackground 40s infinite linear;
