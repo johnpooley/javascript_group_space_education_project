@@ -1,7 +1,7 @@
 <template lang="html">
   <div id="app">
     <div class="apod">
-    <img :src="nasaImage.url" :alt="nasaImage.url" :width = "600" :height = "400">
+    <img id="apodImage" :src="nasaImage.url" :alt="nasaImage.url" :width = "600" :height = "400">
     <h2>Date: {{ nasaImage.date }}</h2>
     <h1>Title: {{ nasaImage.title }}</h1>
     <p>Explanation: {{ nasaImage.explanation }}</p>
@@ -22,10 +22,10 @@ export default {
 
 <style lang="css" scoped>
 
-.apod{
+/* .apod{
   text-align: left;
   width: 96%;
   border-style: solid;
   padding: 10px
-}
+} */
 </style>
