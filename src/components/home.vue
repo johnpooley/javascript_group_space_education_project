@@ -25,7 +25,7 @@
       <nasa-image-view :nasaImage="nasaImage" ></nasa-image-view>
     </div>
     <div class="item2">
-      <people-in-space :peopleInSpace="peopleInSpace" v-if="peopleInSpace"></people-in-space>
+      <span><people-in-space :peopleInSpace="peopleInSpace" v-if="peopleInSpace"></people-in-space></span>
     </div>
     <div class="item3">
       <news-feed :news="news" v-if="news"/>

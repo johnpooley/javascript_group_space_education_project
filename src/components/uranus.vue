@@ -135,7 +135,7 @@ h1 span{
   overflow:hidden;
   box-shadow: 0 0 60px -20px rgba(255, 189, 3, 0.72), -14px -15px 40px -10px rgba(255, 238, 191, 0.23);
   margin:-150px;
-  right:  440px
+  right:  320px
 }
 .earth .background{
   animation: translateBackground 40s infinite linear;

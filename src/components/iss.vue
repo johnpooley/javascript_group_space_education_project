@@ -118,7 +118,7 @@ border-radius:10%
   border: 2px;
   border-radius:10%;
   text-align: center;
-  right: 200px;
+  right: 100px;
   top: 20px
 }
 
