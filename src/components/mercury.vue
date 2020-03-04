@@ -14,10 +14,10 @@
     </br></br></br></br></br></br></br></br>
     <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1H_YX4ky4YMSNalDycbkwy8S2xEEJTR79" type="audio/mpeg">
       </audio>
-      <button v-on:click="playAudio">Play Planet Sound</button><h2>Distance from Sun</h2><p> {{ frenchMercury.perihelion }}</p>
-    <h2>Mass</h2><p> {{ frenchMercury.mass.massValue }}</p>
-    <h2>Gravity</h2><p> {{ frenchMercury.gravity }}</p>
-    <h2>Radius</h2><p> {{ frenchMercury.meanRadius }}</p>
+      <button v-on:click="playAudio">Play Planet Sound</button><h2>Distance from Sun</h2><p> {{ frenchMercury.perihelion }} km</p>
+    <h2>Mass</h2><p> {{ frenchMercury.mass.massValue }} x 10<sup>23</sup>kg</p>
+    <h2>Gravity</h2><p> {{ frenchMercury.gravity }} m/s<sup>2</sup></p>
+    <h2>Radius</h2><p> {{ frenchMercury.meanRadius }} km</p>
     <h2>Discovered by</h2><p> {{ frenchMercury.discoveredBy }} N/A </p>
   </div>
   </div>

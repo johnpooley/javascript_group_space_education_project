@@ -17,10 +17,10 @@
       </audio>
       <button v-on:click="playAudio">Play Planet Sound</button>
     <h2>Moons</h2><p> {{ frenchNeptune.moons[0].moon }}</p>
-    <h2>Distance from Sun</h2><p> {{ frenchNeptune.perihelion }}</p>
-    <h2>Mass</h2><p> {{ frenchNeptune.mass.massValue }}</p>
-    <h2>Gravity</h2><p> {{ frenchNeptune.gravity }}</p>
-    <h2>Radius</h2><p> {{ frenchNeptune.meanRadius }}</p>
+    <h2>Distance from Sun</h2><p> {{ frenchNeptune.perihelion }} km</p>
+    <h2>Mass</h2><p> {{ frenchNeptune.mass.massValue }} x 10<sup>26</sup>kg</p>
+    <h2>Gravity</h2><p> {{ frenchNeptune.gravity }} m/s<sup>2</sup></p>
+    <h2>Radius</h2><p> {{ frenchNeptune.meanRadius }} km</p>
     <h2>Discovered by</h2><p> {{ frenchNeptune.discoveredBy }}</p>
   </div>
   </div>

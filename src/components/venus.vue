@@ -16,10 +16,10 @@
 <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1SjhNvHpDEWEybE3F_stigJwEU-BbvJo_" type="audio/mpeg">
   </audio>
   <button v-on:click="playAudio">Play Planet Sound</button>
-    <h2>Distance from Sun</h2><p> {{ frenchVenus.perihelion }}</p>
-    <h2>Mass</h2><p> {{ frenchVenus.mass.massValue }}</p>
-    <h2>Gravity</h2><p>{{ frenchVenus.gravity }}</p>
-    <h2>Radius</h2><p> {{ frenchVenus.meanRadius }}</p>
+    <h2>Distance from Sun</h2><p> {{ frenchVenus.perihelion }} km</p>
+    <h2>Mass</h2><p> {{ frenchVenus.mass.massValue }} x 10<sup>24</sup>kg</p>
+    <h2>Gravity</h2><p>{{ frenchVenus.gravity }} m/s<sup>2</sup></p>
+    <h2>Radius</h2><p> {{ frenchVenus.meanRadius }} km</p>
     <h2>Discovered by</h2><p> N/A </p>
 </div>
   </div>

@@ -2,46 +2,38 @@
   <div id="jupiter" v-if="frenchJupiter">
     <h1>{{ frenchJupiter.englishName }}</h1>
     <section class = "blurb">
-    <p v-if="wikiJupiter">{{ wikiJupiter.query.pages[38930].extract }}</p>
-  </section>
-      <div class ="facts">
-        <div class="earth">
+      <p v-if="wikiJupiter">{{ wikiJupiter.query.pages[38930].extract }}</p>
+    </section>
+    <div class ="facts">
+      <div class="earth">
         <div class="wrap">
-           <div class="background"></div>
-           <div class="clouds"></div>
+          <div class="background"></div>
+          <div class="clouds"></div>
         </div>
         <div class="mask"></div>
       </div>
-<<<<<<< HEAD
     </br></br></br></br></br></br><h2>Moons</h2><p>
-<label for="moonList">Select a Moon</label>
-<br>
-<select id="frenchJupiter" v-on:change="goToMoon" v-model="selectedMoon">
-  <option v-for="(moon,index) in frenchJupiter.moons"  >{{moon.moon}}</option>
-<!-- <router-link :to="'/moon/'+ :moon.moon" exact> -->
+      <label for="moonList">Select a Moon</label>
+      <br>
+      <select id="frenchJupiter" v-on:change="goToMoon" v-model="selectedMoon">
+        <option v-for="(moon,index) in frenchJupiter.moons"  >{{moon.moon}}</option>
+        <!-- <router-link :to="'/moon/'+ :moon.moon" exact> -->
 
-</select>
+      </select>
+      <!-- <select id="countries" v-model="selectedCountry">
+      <option v-for="(country, index) in countries"  v-bind:value="country" >{{country.name}}</option> -->
 
-
-<!-- <select id="countries" v-model="selectedCountry">
-  <option v-for="(country, index) in countries"  v-bind:value="country" >{{country.name}}</option> -->
-
-
-
-    </p>
-=======
-    </br></br></br></br></br></br></br></br>
-    <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1AnWUlF77c7AePjXXaDMC357r8aZW4Ggl" type="audio/wav">
-     </audio>
-     <button v-on:click="playAudio">Play Planet Sound</button><h2>Moons</h2><p> {{ frenchJupiter.moons[0].moon }}</p>
->>>>>>> develop2
-    <h2>Distance from Sun</h2><p> {{ frenchJupiter.perihelion }}</p>
-    <h2>Mass</h2><p> {{ frenchJupiter.mass.massValue }}</p>
-    <h2>Gravity</h2> <p>{{ frenchJupiter.gravity }}</p>
-    <h2>Radius</h2><p> {{ frenchJupiter.meanRadius }}</p>
-    <h2>Discovered by</h2><p> {{ frenchJupiter.discoveredBy }} N/A </p>
-  </div>
-  </div>
+  </br></br></br></br></br></br></br></br>
+  <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1AnWUlF77c7AePjXXaDMC357r8aZW4Ggl" type="audio/wav">
+  </audio>
+  <button v-on:click="playAudio">Play Planet Sound</button><h2>Moons</h2><p> {{ frenchJupiter.moons[0].moon }}</p>
+  <h2>Distance from Sun</h2><p> {{ frenchJupiter.perihelion }} km</p>
+  <h2>Mass</h2><p> {{ frenchJupiter.mass.massValue }} x 10<sup>27</sup>kg</p>
+  <h2>Gravity</h2> <p>{{ frenchJupiter.gravity }} m/s<sup>2</sup></p>
+  <h2>Radius</h2><p> {{ frenchJupiter.meanRadius }} km</p>
+  <h2>Discovered by</h2><p> {{ frenchJupiter.discoveredBy }} N/A </p>
+</div>
+</div>
 </template>
 
 <script>
@@ -76,20 +68,20 @@ export default {
     .then(wikiJupiter => this.wikiJupiter = wikiJupiter)
   },
   methods: {
-      playAudio: function(event){
-        let audio = document.getElementById('testAudio');
-        if(audio.className == 'is-playing'){
-          audio.className = "";
-          event.target.innerHTML = "Play Planet Sound"
-          audio.pause();
-        }else{
-          audio.className = "is-playing";
-          event.target.innerHTML = "Pause";
-          audio.play();
-        }
+    playAudio: function(event){
+      let audio = document.getElementById('testAudio');
+      if(audio.className == 'is-playing'){
+        audio.className = "";
+        event.target.innerHTML = "Play Planet Sound"
+        audio.pause();
+      }else{
+        audio.className = "is-playing";
+        event.target.innerHTML = "Pause";
+        audio.play();
       }
     }
-    }
+  }
+}
 </script>
 
 <style lang="css" scoped>
@@ -115,9 +107,9 @@ h1 {
 }
 
 h1 span{
-background-color:rgba(51,51,51,0.5);
-padding: 20px;
-border-radius:10%
+  background-color:rgba(51,51,51,0.5);
+  padding: 20px;
+  border-radius:10%
 }
 
 .blurb{

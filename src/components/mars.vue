@@ -21,10 +21,10 @@
       <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1t_YLXHzoosGu6dI3MpHovS8rkLSFKDf9" type="audio/mpeg">
       </audio>
       <button v-on:click="playAudio">Play Planet Sound</button><h2>Moons</h2><p> {{ frenchMars.moons[0].moon }}</p>
-      <h2>Distance from Sun</h2><p> {{ frenchMars.perihelion }}</p>
-      <h2>Mass</h2><p> {{ frenchMars.mass.massValue }}</p>
-      <h2>Gravity</h2><p> {{ frenchMars.gravity }}</p>
-      <h2>Radius</h2><p> {{ frenchMars.meanRadius }}</p>
+      <h2>Distance from Sun</h2><p> {{ frenchMars.perihelion }} km</p>
+      <h2>Mass</h2><p> {{ frenchMars.mass.massValue }} x 10<sup>24</sup>kg</p>
+      <h2>Gravity</h2><p> {{ frenchMars.gravity }} m/s<sup>2</sup></p>
+      <h2>Radius</h2><p> {{ frenchMars.meanRadius }} km</p>
       <h2>Discovered by</h2><p> {{ frenchMars.discoveredBy }} N/A </p>
     </div>
 

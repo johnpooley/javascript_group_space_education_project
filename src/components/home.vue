@@ -70,7 +70,7 @@ export default {
     .then(res => res.json())
     .then(peopleInSpace => this.peopleInSpace = peopleInSpace)
 
-    fetch('http://newsapi.org/v2/top-headlines?q=nasa&moon&pageSize=2&from=2020-02-25&sortBy=popularity&apiKey=bb8ea160607e4c3ebb0a5ccb53c23420')
+    fetch('http://newsapi.org/v2/top-headlines?q=space&pageSize=2&from=2020-02-25&sortBy=popularity&apiKey=bb8ea160607e4c3ebb0a5ccb53c23420')
     .then(res => res.json())
     .then(news => this.news = news)
   },

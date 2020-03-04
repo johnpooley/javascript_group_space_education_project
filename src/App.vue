@@ -8,7 +8,7 @@
  </head>
       <nav>
         <ul>
-        <span><li><a href="/">Home</a></li></span>
+        <li><span><a href="/">Home</a></span></li>
       </ul>
       </nav>
     </head>
@@ -66,7 +66,7 @@ ul {
   overflow: hidden;
   border-radius: 10px;
   width: 100%;
-  position: fixed
+  /* position: fixed */
 }
 
 li {
@@ -85,6 +85,15 @@ li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: #111;
+}
+
+li a {
+  border-style: outset;
+  border-width: 7px;
+  border-top-color: rgb(0, 31, 153);
+  border-right-color: rgb(0, 31, 153);
+  border-bottom-color: rgb(0, 36, 179);
+  border-left-color: rgb(0, 36, 179);
 }
 
 </style>
