@@ -12,17 +12,15 @@
           <div class="mask"></div>
         </div>
       </br></br></br></br></br></br></br></br>
-      <label for="moonList">Select a Moon</label>
-      <br>
-      <select id="frenchSaturn" @change="goToMoon" v-model="selectedMoon">
-        <option v-for="(moon,index) in frenchSaturn.moons"  >{{moon.moon}}</option>
-
-      </select>
-    </br></br></br></br></br></br></br></br>
-
+    </br>
+</br>
     <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1tnyEFqZXGMRkT7DIybDsuzgXUwT2XyYD" type="audio/mpeg">
     </audio>
-    <button v-on:click="playAudio">Play Planet Sound</button>
+        <button v-on:click="playAudio">Play Planet Sound</button>
+  </br>
+    <select id="frenchSaturn" @change="goToMoon" v-model="selectedMoon">
+      <option v-for="(moon,index) in frenchSaturn.moons"  >{{moon.moon}}</option>
+    </select>
     <h2>Moons</h2><p> {{ frenchSaturn.moons[0].moon }}</p>
     <h2>Distance from Sun</h2><p> {{ frenchSaturn.perihelion }} km</p>
     <h2>Mass</h2><p> {{ frenchSaturn.mass.massValue }} x 10<sup>26</sup>kg</p>
@@ -136,6 +134,10 @@ h1 span{
 
 .list{
   /* background-color:rgba(51,51,51,0.5); */
+}
+
+h1{
+  font-family: "Oxanium"
 }
 
 .earth{

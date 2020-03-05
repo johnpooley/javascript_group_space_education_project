@@ -16,16 +16,13 @@
       </div>
       <div class="mask"></div>
     </div>
-    <select id="frenchMars" @change="goToMoon" v-model="selectedMoon">
-      <option v-for="(moon,index) in frenchMars.moons"  >{{moon.moon}}</option>
-
-    </select>
-  </br></br></br></br></br></br></br></br>
-
       </br></br></br></br></br></br></br></br>
       <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1t_YLXHzoosGu6dI3MpHovS8rkLSFKDf9" type="audio/mpeg">
       </audio>
-      <button v-on:click="playAudio">Play Planet Sound</button><h2>Moons</h2><p> {{ frenchMars.moons[0].moon }}</p>
+      <button v-on:click="playAudio">Play Planet Sound</button><h2>Moons</h2>
+      <select id="frenchMars" @change="goToMoon" v-model="selectedMoon">
+        <option v-for="(moon,index) in frenchMars.moons"  >{{moon.moon}}</option>
+      </select>
       <h2>Distance from Sun</h2><p> {{ frenchMars.perihelion }} km</p>
       <h2>Mass</h2><p> {{ frenchMars.mass.massValue }} x 10<sup>24</sup>kg</p>
       <h2>Gravity</h2><p> {{ frenchMars.gravity }} m/s<sup>2</sup></p>

@@ -16,7 +16,7 @@
           <h2>Mass</h2> <p>{{ frenchMoon.mass.massValue }} x 10<sup>22</sup>kg</p>
           <h2>Gravity</h2> <p>{{ frenchMoon.gravity }} m/s<sup>2</sup></p>
           <h2>Radius</h2> <p>{{ frenchMoon.meanRadius }} km</p>
-          <h2>Discovered by</h2> <p>{{ frenchMoon.discoveredBy }} N/A</p></div>          ​
+          <h2>Discovered by</h2> <p>{{ frenchMoon.discoveredBy }}</p></div>          ​
         </div>
       </div>
     </div>
@@ -183,6 +183,11 @@
         }
 
       }
+
+      h1{
+        font-family: "Oxanium"
+      }
+
       button {
         color:#ffffff;
         font: old 84% 'trebuchet ms',helvetica,sans-serif;

@@ -70,7 +70,7 @@ export default {
           audio.className = "is-playing";
           event.target.innerHTML = "Pause";
           audio.play();
-        
+
       }
     }
   }
@@ -131,6 +131,10 @@ h1 span{
 
 .list{
   /* background-color:rgba(51,51,51,0.5); */
+}
+
+h1{
+  font-family: "Oxanium"
 }
 
 .earth{

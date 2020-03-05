@@ -130,6 +130,11 @@ border-radius:10%
   margin:-150px;
   right:  320px
 }
+
+h1{
+  font-family: "Oxanium"
+}
+
 .earth .background{
   animation: translateBackground 40s infinite linear;
   background:url('../assets/planet_masks/mercury.jpg') repeat-x;

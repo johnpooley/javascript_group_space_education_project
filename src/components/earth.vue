@@ -14,7 +14,8 @@
       </div>
       <div class = "list"></br></br></br></br></br></br>
       <h2>Moons</h2>
-      <router-link :to="{name: 'moon', params:{ moonname: moon}}"><p>Luna</p></router-link>
+      <a href="/moon/moon">Luna</a>
+      <!-- <router-link :to="{name: 'moon', params:{ moonname: moon}}"><p>Luna</p></router-link> -->
       <h2>Satellites</h2>
       <router-link :to="{name:'iss', params:{ moonname: iss}}"><p>International Space Station</p></router-link>
       <h2>Distance from Sun</h2> {{ frenchEarth.perihelion }} km</p>
@@ -106,6 +107,10 @@ border-radius:10%
   text-align: center;
   right: 200px;
   top: 20px
+}
+
+h1{
+  font-family: "Oxanium"
 }
 
 .list{

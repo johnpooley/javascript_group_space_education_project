@@ -114,6 +114,10 @@ border-radius:10%
   top: 20px
 }
 
+h1{
+  font-family: "Oxanium"
+}
+
 .list{
   /* background-color:rgba(51,51,51,0.5); */
 }
@@ -191,6 +195,10 @@ ul {
 
 li {
   float: left;
+}
+
+h1{
+  font-family: "Oxanium"
 }
 
 li a {

@@ -16,18 +16,13 @@
   </br>  </br>
   <label for="moonList">Select a Moon</label>
   <br>
-  <select id="frenchUranus" @change="goToMoon" v-model="selectedMoon">
-    <option v-for="(moon,index) in frenchUranus.moons"  >{{moon.moon}}</option>
-
-  </select>
-</br></br></br></br></br></br></br></br>
-
-</br>  </br>
-</br> </br></br>
+</br></br></br></br>
 <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1JVdBcYNAI3GA7VV99FrlkTx_3DTevoKI" type="audio/mpeg">
 </audio>
 <button v-on:click="playAudio">Play Planet Sound</button>
-<h2>Moons</h2><p> {{ frenchUranus.moons[0].moon }}</p>
+<h2>Moons</h2>  <select id="frenchUranus" @change="goToMoon" v-model="selectedMoon">
+    <option v-for="(moon,index) in frenchUranus.moons"  >{{moon.moon}}</option>
+  </select>
 <h2>Distance from Sun</h2><p> {{ frenchUranus.perihelion }} km</p>
 <h2>Mass</h2><p> {{ frenchUranus.mass.massValue }} x 10<sup>25</sup>kg</p>
 <h2>Gravity</h2><p> {{ frenchUranus.gravity }} m/s<sup>2</sup></p>
@@ -112,6 +107,10 @@ h1 span{
   background-color:rgba(51,51,51,0.5);
   padding: 20px;
   border-radius:10%
+}
+
+h1{
+  font-family: "Oxanium"
 }
 
 .blurb{

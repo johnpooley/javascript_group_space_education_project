@@ -19,10 +19,10 @@
 
       <br>
       <select id="frenchNeptune" @change="goToMoon" v-model="selectedMoon">
+         <option selected disabled>Select Moon</option>
         <option v-for="(moon,index) in frenchNeptune.moons"  >{{moon.moon}}</option>
 
       </select>
-    </br></br></br></br></br></br></br></br>
     <h2>Distance from Sun</h2><p> {{ frenchNeptune.perihelion }} km</p>
     <h2>Mass</h2><p> {{ frenchNeptune.mass.massValue }} x 10<sup>26</sup>kg</p>
     <h2>Gravity</h2><p> {{ frenchNeptune.gravity }} m/s<sup>2</sup></p>
@@ -119,6 +119,10 @@ border-radius:10%
   position: relative;
   float: left;
   text-align: left
+}
+
+h1{
+  font-family: "Oxanium"
 }
 
 .facts{

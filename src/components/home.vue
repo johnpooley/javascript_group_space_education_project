@@ -2,9 +2,10 @@
   <div id="app">
     <head>
       <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
-      <h1>Our Solar System</h1>
     </head>
   </br>
+  <h1 class="header">The Solar System</h1>
+  <p class = "instructions"> Click below to learn more about the planets of our solar system</p>
   <section class="planets">
     <figure><router-link :to="{ name: 'mercury' }"><img src="../assets/mercury.png" alt="mercury" width="50" height="50"></router-link></figure>
     <figure><router-link :to="{ name: 'venus' }"><img src="../assets/venus.png" alt="venus" width="145" height="145"></router-link></figure>
@@ -192,6 +193,16 @@ figcaption{
   margin-right: 25px;
   margin-left: 15px;
   padding: 15px;
+}
+
+p.instructions{
+  font-size: 1.5em;
+  font-family: Roboto
+}
+
+h1.header{
+  font-family: Oxanium;
+  font-size: 2em
 }
 
 /* #apodImage:hover {

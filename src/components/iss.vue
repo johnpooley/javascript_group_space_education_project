@@ -126,6 +126,10 @@ border-radius:10%
   /* background-color:rgba(51,51,51,0.5); */
 }
 
+h1{
+  font-family: "Oxanium"
+}
+
 .earth{
   width:300px;
   height:300px;
