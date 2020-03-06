@@ -71,18 +71,18 @@ export default {
     .then(res => res.json())
     .then(peopleInSpace => this.peopleInSpace = peopleInSpace)
 
-    fetch('http://newsapi.org/v2/top-headlines?q=space&pageSize=2&from=2020-02-25&sortBy=popularity&apiKey=bb8ea160607e4c3ebb0a5ccb53c23420')
+    fetch('http://newsapi.org/v2/top-headlines?q=space&pageSize=2&from=2020-02-25&sortBy=popularity&apiKey=[ INSERT API KEY ]')
     .then(res => res.json())
     .then(news => this.news = news)
   },
   methods: {
     apodDate(selectedDate) {
-      fetch('https://api.nasa.gov/planetary/apod?api_key=C0ehDJAti1cLdlnjQciOknJg4WMAeOBqcpOL1G4a&date=' + this.selectedDate + '')
+      fetch('https://api.nasa.gov/planetary/apod?api_key=[ INSERT API KEY ]&date=' + this.selectedDate + '')
       .then( res => res.json())
       .then(nasaImage => this.nasaImage = nasaImage)
     },
     apod() {
-      fetch('https://api.nasa.gov/planetary/apod?api_key=C0ehDJAti1cLdlnjQciOknJg4WMAeOBqcpOL1G4a')
+      fetch('https://api.nasa.gov/planetary/apod?api_key=[ INSERT API KEY ]')
       .then(res => res.json())
       .then(nasaImage => this.nasaImage = nasaImage)
     }
