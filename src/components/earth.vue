@@ -14,13 +14,13 @@
       </div>
       <div class = "list"></br></br></br></br></br></br>
       <h2>Moons</h2>
-      <router-link :to="{name: 'moon', params:{ moonname: lune}}"><p>Luna</p></router-link>
+      <router-link :to="{name: 'moon', params:{ moonname: moon}}"><p>Luna</p></router-link>
       <h2>Satellites</h2>
-      <router-link :to="{name:'iss', params:{ moonname: luna}}"><p>International Space Station</p></router-link>
-      <h2>Distance from Sun</h2> {{ frenchEarth.perihelion }}</p>
-      <h2>Mass</h2> {{ frenchEarth.mass.massValue }}</p>
-      <h2>Gravity</h2> {{ frenchEarth.gravity }}</p>
-      <h2>Radius</h2> {{ frenchEarth.meanRadius }}</p></div>
+      <router-link :to="{name:'iss', params:{ moonname: iss}}"><p>International Space Station</p></router-link>
+      <h2>Distance from Sun</h2> {{ frenchEarth.perihelion }} km</p>
+      <h2>Mass</h2> {{ frenchEarth.mass.massValue }} x 10<sup>23</sup>kg</p>
+      <h2>Gravity</h2> {{ frenchEarth.gravity }} m/s<sup>2</sup></p>
+      <h2>Radius</h2> {{ frenchEarth.meanRadius }} km</p></div>
     </div>
 
   </div>
@@ -120,7 +120,7 @@ border-radius:10%
   overflow:hidden;
   box-shadow: 0 0 60px -20px rgba(255, 189, 3, 0.72), -14px -15px 40px -10px rgba(255, 238, 191, 0.23);
   margin:-150px;
-  right:  440px
+  right:  320px;
 }
 .earth .background{
   animation: translateBackground 40s infinite linear;

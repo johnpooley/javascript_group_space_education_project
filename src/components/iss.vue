@@ -1,75 +1,81 @@
 <template lang="html">
-  <div id="mercury" v-if="frenchMercury">
-    <h1>{{ frenchMercury.englishName }}</h1>
-    <section class = "blurb">
-    <p v-if="wikiMercury">{{ wikiMercury.query.pages[19694].extract }}</p></section>
-      <div class ="facts">
-        <div class="earth">
-        <div class="wrap">
-           <div class="background"></div>
-           <div class="clouds"></div>
-        </div>
-        <div class="mask"></div>
-      </div>
-    </br></br></br></br></br></br></br></br>
-    <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1H_YX4ky4YMSNalDycbkwy8S2xEEJTR79" type="audio/mpeg">
-      </audio>
-      <button v-on:click="playAudio">Play Planet Sound</button><h2>Distance from Sun</h2><p> {{ frenchMercury.perihelion }} km</p>
-    <h2>Mass</h2><p> {{ frenchMercury.mass.massValue }} x 10<sup>23</sup>kg</p>
-    <h2>Gravity</h2><p> {{ frenchMercury.gravity }} m/s<sup>2</sup></p>
-    <h2>Radius</h2><p> {{ frenchMercury.meanRadius }} km</p>
-    <h2>Discovered by</h2><p> {{ frenchMercury.discoveredBy }} N/A </p>
+  <div id="iss">
+    <h1>The International Space Station</h1>
+    <section class ="blurb">
+    <p v-if="wikiIss">{{wikiIss.query.pages[15043].extract}}
+    </p></section>
+  <div class ="facts">
+    <div class="map">
+      <h2>Where is the ISS now?</h2>
+    <iframe
+      :src="results.map_url"
+      width="300"
+      height="300"
+      id="gmap_canvas"
+      frameborder="0"
+      scrolling="no"
+      marginheight="0"
+      marginwidth="0"
+      zoom=".00001"></iframe>
+    </div>
+    <h2>Deployed</h2> <p>1998</p>
+    <h2>Call Sign</h2><p>Alpha</p>
+    <h2>Orbital Speed</h2> <p>7.66 km/s</p>
+    <h2>Length</h2> <p>73 m</p>
+    <h2>Width</h2> <p>109 m</p>
+    <h2>Mass</h2> <p>419, 725 kg</p>
   </div>
   </div>
-
 </template>
 
 <script>
-// import { eventBus } from ''
 export default {
-  name: 'mercury',
-  data(){
-    return{
-      frenchMercury:null,
-      wikiMercury: null
+  name: "iss",
+  data() {
+    return {
+      issStats:null,
+      wikiISS:null,
 
+      results: {
+        map_url: "",
+        google_url: "",
+      }
     };
-    //fetch from wikidata API and French API
   },
-  mounted(){
-    fetch('https://api.le-systeme-solaire.net/rest/bodies/mercury')
-    .then(res => res.json())
-    .then(frenchMercury => this.frenchMercury = frenchMercury);
+   mounted:function() {
 
-    // how do we arrange multiple API fetch requests?
+     fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=International_Space_Station&origin=*')
+     .then(res => res.json())
+     .then(wikiIss => this.wikiIss = wikiIss);
 
-    fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Mercury_(planet)&origin=*')
-    .then(res => res.json())
-    .then(wikiMercury => this.wikiMercury = wikiMercury)
-  },
-  methods: {
-      playAudio: function(event){
-        let audio = document.getElementById('testAudio');
-        if(audio.className == 'is-playing'){
-          audio.className = "";
-          event.target.innerHTML = "Play Planet Sound"
-          audio.pause();
-        }else{
-          audio.className = "is-playing";
-          event.target.innerHTML = "Pause";
-          audio.play();
-        }
+     this.getData();
+
+     window.setInterval(this.getData, 10000);
+    },
+    methods: {
+      getData() {
+        console.log("here");
+        fetch("http://api.open-notify.org/iss-now", {})
+        .then(res => res.json())
+        .then(issStats => this.issStats = issStats)
+        .then(response => {
+          this.results.map_url =`https://maps.google.com/maps?q=${response.iss_position.latitude},${response.iss_position.longitude}&t=&z=3&ie=UTF8&iwloc=&output=embed&maptype=satellite`
+        })
+        .catch(error => {
+          console.log(error);
+        });
       }
     }
-    }
+};
 </script>
 
 <style lang="css" scoped>
+
 #view {
   width: 100% !important
 }
 
-#mercury {
+#earth {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -82,13 +88,13 @@ h1 {
   font-size: 3em;
   font-family: 'Oxanium', serif;
   position: relative;
-  text-align: left;
-  margin-left: 40px;
+  text-align: left
 }
 
 h1 span{
 background-color:rgba(51,51,51,0.5);
 padding: 20px;
+margin-left: 20px;
 border-radius:10%
 }
 
@@ -112,7 +118,7 @@ border-radius:10%
   border: 2px;
   border-radius:10%;
   text-align: center;
-  right: 200px;
+  right: 100px;
   top: 20px
 }
 
@@ -128,11 +134,11 @@ border-radius:10%
   overflow:hidden;
   box-shadow: 0 0 60px -20px rgba(255, 189, 3, 0.72), -14px -15px 40px -10px rgba(255, 238, 191, 0.23);
   margin:-150px;
-  right:  320px
+  right:  440px
 }
 .earth .background{
   animation: translateBackground 40s infinite linear;
-  background:url('../assets/planet_masks/mercury.jpg') repeat-x;
+  background:url('../assets/planet_masks/earth.jpg') repeat-x;
   width:300px;
   height:300px;
   position:absolute;

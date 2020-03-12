@@ -4,10 +4,11 @@
       <link rel = "stylesheet"
    type = "text/css"
    href = "./public/style.css" />
+   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
  </head>
       <nav>
         <ul>
-        <li><a href="/home">Home</a></li>
+        <li><span><a href="/">Home</a></span></li>
       </ul>
       </nav>
     </head>
@@ -62,6 +63,37 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+  /* position: fixed */
+}
+
+li {
+  float: left;
+  background-color: rgba(51,51,51)
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+li a {
+  border-style: outset;
+  border-width: 7px;
+  border-top-color: rgb(0, 31, 153);
+  border-right-color: rgb(0, 31, 153);
+  border-bottom-color: rgb(0, 36, 179);
+  border-left-color: rgb(0, 36, 179);
 }
 
 </style>

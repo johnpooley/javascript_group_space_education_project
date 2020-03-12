@@ -16,12 +16,20 @@
       </div>
       <div class="mask"></div>
     </div>
-        <button class="button_play" @click.prevent="playSound('https://drive.google.com/uc?export=download&id=1t_YLXHzoosGu6dI3MpHovS8rkLSFKDf9')"></button>
-      </br></br></br></br></br></br><h2>Moons</h2><p> {{ frenchMars.moons[0].moon }}</p>
-      <h2>Distance from Sun</h2><p> {{ frenchMars.perihelion }}</p>
-      <h2>Mass</h2><p> {{ frenchMars.mass.massValue }}</p>
-      <h2>Gravity</h2><p> {{ frenchMars.gravity }}</p>
-      <h2>Radius</h2><p> {{ frenchMars.meanRadius }}</p>
+    <select id="frenchMars" @change="goToMoon" v-model="selectedMoon">
+      <option v-for="(moon,index) in frenchMars.moons"  >{{moon.moon}}</option>
+
+    </select>
+  </br></br></br></br></br></br></br></br>
+
+      </br></br></br></br></br></br></br></br>
+      <audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1t_YLXHzoosGu6dI3MpHovS8rkLSFKDf9" type="audio/mpeg">
+      </audio>
+      <button v-on:click="playAudio">Play Planet Sound</button><h2>Moons</h2><p> {{ frenchMars.moons[0].moon }}</p>
+      <h2>Distance from Sun</h2><p> {{ frenchMars.perihelion }} km</p>
+      <h2>Mass</h2><p> {{ frenchMars.mass.massValue }} x 10<sup>24</sup>kg</p>
+      <h2>Gravity</h2><p> {{ frenchMars.gravity }} m/s<sup>2</sup></p>
+      <h2>Radius</h2><p> {{ frenchMars.meanRadius }} km</p>
       <h2>Discovered by</h2><p> {{ frenchMars.discoveredBy }} N/A </p>
     </div>
 
@@ -36,19 +44,15 @@ export default {
   data(){
     return{
       frenchMars:null,
-      wikiMars: null
+      wikiMars: null,
+      moonList:[],
+      selectedMoon:"",
+      moonNames: []
+
     };
     //fetch from wikidata API and French API
   },
 
-  methods: {
-    playSound (sound) {
-      if(sound) {
-        var audio = new Audio(sound);
-        audio.play();
-      }
-    }
-  },
   mounted(){
 
     fetch('https://api.le-systeme-solaire.net/rest/bodies/mars')
@@ -60,8 +64,26 @@ export default {
     fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Mars&origin=*')
     .then(res => res.json())
     .then(wikiMars => this.wikiMars = wikiMars)
-  }
-}
+  },
+  methods: {
+    goToMoon(){
+      this.$router.push({path:'/moon/'+this.selectedMoon})
+    },
+
+      playAudio: function(event){
+        let audio = document.getElementById('testAudio');
+        if(audio.className == 'is-playing'){
+          audio.className = "";
+          event.target.innerHTML = "Play Planet Sound"
+          audio.pause();
+        }else{
+          audio.className = "is-playing";
+          event.target.innerHTML = "Pause";
+          audio.play();
+        }
+      }
+    }
+    }
 </script>
 
 <style lang="css" scoped>
@@ -128,7 +150,7 @@ border-radius:10%
   overflow:hidden;
   box-shadow: 0 0 60px -20px rgba(255, 189, 3, 0.72), -14px -15px 40px -10px rgba(255, 238, 191, 0.23);
   margin:-150px;
-  right:  440px
+  right:  320px
 }
 .earth .background{
   animation: translateBackground 40s infinite linear;

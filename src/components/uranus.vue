@@ -14,13 +14,24 @@
       </div>
     </br>
   </br>  </br>
+  <label for="moonList">Select a Moon</label>
+  <br>
+  <select id="frenchUranus" @change="goToMoon" v-model="selectedMoon">
+    <option v-for="(moon,index) in frenchUranus.moons"  >{{moon.moon}}</option>
+
+  </select>
+</br></br></br></br></br></br></br></br>
+
 </br>  </br>
-</br>
+</br> </br></br>
+<audio id="testAudio" hidden src="https://drive.google.com/uc?export=download&id=1JVdBcYNAI3GA7VV99FrlkTx_3DTevoKI" type="audio/mpeg">
+</audio>
+<button v-on:click="playAudio">Play Planet Sound</button>
 <h2>Moons</h2><p> {{ frenchUranus.moons[0].moon }}</p>
-<h2>Distance from Sun</h2><p> {{ frenchUranus.perihelion }}</p>
-<h2>Mass</h2><p> {{ frenchUranus.mass.massValue }}</p>
-<h2>Gravity</h2><p> {{ frenchUranus.gravity }}</p>
-<h2>Radius</h2><p> {{ frenchUranus.meanRadius }}</p>
+<h2>Distance from Sun</h2><p> {{ frenchUranus.perihelion }} km</p>
+<h2>Mass</h2><p> {{ frenchUranus.mass.massValue }} x 10<sup>25</sup>kg</p>
+<h2>Gravity</h2><p> {{ frenchUranus.gravity }} m/s<sup>2</sup></p>
+<h2>Radius</h2><p> {{ frenchUranus.meanRadius }} km</p>
 <h2>Discovered by</h2><p> {{ frenchUranus.discoveredBy }} </p>
 </div>
 
@@ -35,7 +46,10 @@ export default {
   data(){
     return{
       frenchUranus:null,
-      wikiUranus: null
+      wikiUranus: null,
+      moonList:[],
+      selectedMoon:"",
+      moonNames: []
 
     };
     //fetch from wikidata API and French API
@@ -50,6 +64,24 @@ export default {
     fetch('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Uranus&origin=*')
     .then(res => res.json())
     .then(wikiUranus => this.wikiUranus = wikiUranus)
+  },
+  methods: {
+    goToMoon(){
+      this.$router.push({path:'/moon/'+this.selectedMoon})
+    },
+
+    playAudio: function(event){
+      let audio = document.getElementById('testAudio');
+      if(audio.className == 'is-playing'){
+        audio.className = "";
+        event.target.innerHTML = "Play Planet Sound"
+        audio.pause();
+      }else{
+        audio.className = "is-playing";
+        event.target.innerHTML = "Pause";
+        audio.play();
+      }
+    }
   }
 }
 </script>
@@ -118,7 +150,7 @@ h1 span{
   overflow:hidden;
   box-shadow: 0 0 60px -20px rgba(255, 189, 3, 0.72), -14px -15px 40px -10px rgba(255, 238, 191, 0.23);
   margin:-150px;
-  right:  440px
+  right:  320px
 }
 .earth .background{
   animation: translateBackground 40s infinite linear;
